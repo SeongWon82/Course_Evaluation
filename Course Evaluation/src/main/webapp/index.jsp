@@ -104,13 +104,13 @@
 		<form method="get" action="./index.jsp" class="form-inline mt-3">
 			<select name="courseDivide" class="form-control mx-1 mt-2">
 				<option value="전체">전체</option>
-				<option value="전공"><% if(courseDivide.equals("전공")) out.println("selected"); %>전공</option>
-				<option value="교양"><% if(courseDivide.equals("교양")) out.println("selected"); %>교양</option>
-				<option value="기타"><% if(courseDivide.equals("기타")) out.println("selected"); %>기타</option>
+				<option value="전공">전공</option>
+				<option value="교양">교양</option>
+				<option value="기타">기타</option>
 			</select>
 			<select name="searchType" class="form-control mx-1 mt-2">
 				<option value="최신순">최신순</option>
-				<option value="추천순"><% if(courseDivide.equals("추천순")) out.println("selected"); %>추천순</option>
+				<option value="추천순">추천순</option>
 			</select>
 			<input type="text" name="search" class="form-control mx-1 mt-2" placeholder="내용을 입력하세요.">
 			<button type="submit" class="btn btn-primary mx-1 mt-2">검색</button>
@@ -143,11 +143,11 @@
 						성적<span style="color: red;"><%= evaluation.getCreditScore()%></span>
 						널널<span style="color: red;"><%= evaluation.getComfortableScore()%></span>
 						강의<span style="color: red;"><%= evaluation.getCourseScore()%></span>
-						<span style="color: green;"><%= evaluation.getLikeCount()%></span> 
+						<span style="color: green;">(추천: <%= evaluation.getLikeCount()%>)</span> 
 					</div>
 					<div class="col-3 text-right">
-						<a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=">추천</a>
-						<a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=">삭제</a>
+						<a onclick="return confirm('추천하시겠습니까?')" href="./likeAction.jsp?evaluationID=<%= evaluation.getEvaluationID() %>">추천</a>
+						<a onclick="return confirm('삭제하시겠습니까?')" href="./deleteAction.jsp?evaluationID=<%= evaluation.getEvaluationID() %>">삭제</a>
 					</div>
 				</div>
 			</div>
